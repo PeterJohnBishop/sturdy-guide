@@ -13,5 +13,6 @@ FROM alpine:latest
 WORKDIR /app
 
 COPY --from=builder /app/sturdy-guide .
+
 EXPOSE 8080
 CMD ["./sturdy-guide"]
