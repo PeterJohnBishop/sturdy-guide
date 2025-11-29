@@ -1,20 +1,16 @@
 package main
 
 import (
-	"net/http"
+	"log"
+	"sturdy-guide/server"
 
-	"github.com/gin-gonic/gin"
+	"github.com/subosito/gotenv"
 )
 
 func main() {
-
-	r := gin.Default()
-
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "Serving Gin at port 8080",
-		})
-	})
-
-	r.Run()
+	err := gotenv.Load(".env")
+	if err != nil {
+		log.Println("Error loading .env file:", err)
+	}
+	server.ServeGin()
 }
