@@ -1,4 +1,6 @@
 import requests
+import sys
+import json
 
 class APIClient:
     def __init__(self, base_url, api_key):
@@ -38,6 +40,12 @@ class APIClient:
         except requests.exceptions.RequestException as e:
             return {"error": str(e), "response": response.text}
 
+def main():
+    raw = sys.stdin.read()
+    data = json.loads(raw)
+    name = data.get("name")
+    print(f"Hello, {name}!")
+    # json.dumps(result) send to go
 
 if __name__ == "__main__":
     BASE_URL = "https://api.example.com/v1"

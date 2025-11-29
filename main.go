@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+
 	r := gin.Default()
 
 	r.GET("/", func(c *gin.Context) {
